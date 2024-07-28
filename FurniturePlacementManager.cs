@@ -58,29 +58,6 @@ public class FurniturePlacementManager : MonoBehaviour
                     break;
             }
         }
-        else if (Input.touchCount == 2 && !IsPointerOverUI(Input.GetTouch(0)) && !IsPointerOverUI(Input.GetTouch(1)))
-        {
-            // Handle two-finger touch for rotation and scaling
-            Touch touchZero = Input.GetTouch(0);
-            Touch touchOne = Input.GetTouch(1);
-
-            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
-
-            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
-
-            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
-
-            // Scale the object based on the touch delta magnitude difference
-            if (placedObject != null)
-            {
-                ScaleObject(deltaMagnitudeDiff);
-            }
-
-            // Rotate the object based on the rotation gesture
-            RotateObject(touchOne);
-        }
     }
 
     public void SwitchObject(GameObject newObjectPrefab)
