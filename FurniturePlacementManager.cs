@@ -83,29 +83,6 @@ public class FurniturePlacementManager : MonoBehaviour
         }
     }
 
-    // Move the object based on touch delta position
-    void MoveObject(Vector2 deltaPosition)
-    {
-        placedObject.transform.position += new Vector3(deltaPosition.x, 0, deltaPosition.y);
-    }
-
-    // Scale the object based on touch delta magnitude difference
-    void ScaleObject(float deltaMagnitudeDiff)
-    {
-        placedObject.transform.localScale += new Vector3(deltaMagnitudeDiff, deltaMagnitudeDiff, deltaMagnitudeDiff);
-    }
-
-    // Rotate the object based on touch rotation
-    void RotateObject(Touch touch)
-    {
-        Vector2 touchDeltaPosition = touch.deltaPosition;
-
-        float rotationAngle = touchDeltaPosition.x * rotationSpeed * Mathf.Deg2Rad;
-        Quaternion deltaRotation = Quaternion.Euler(Vector3.up * rotationAngle);
-
-        placedObject.transform.rotation = initialRotation * deltaRotation;
-    }
-
     public void SwitchObject(GameObject newObjectPrefab)
     {
         if (placedObject != null)
